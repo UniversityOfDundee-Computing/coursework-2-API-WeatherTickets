@@ -22,15 +22,18 @@ window.onload = function () {
             return events.map(function (events) {
                 var img = createNode('img');
                 var h5 = createNode('h5');
+                var h6 = createNode('h6');
                 var p = createNode('p');
                 var p2 = createNode('p');
                 var a = createNode('a');
 
+                // Only show events in the US
                 if (events.venue.country == "US") {
                     p.innerHTML = events.venue.city;
                     p2.innerHTML = events.venue.state;
                     img.src = events.performers[0].image;
-                    h5.innerHTML = events.venue.name;
+                    h6.innerHTML = events.venue.name;
+                    h5.innerHTML = events.performers[0].name;
                     a.href = events.url;
 
                     var column = createNode('div');
@@ -43,13 +46,15 @@ window.onload = function () {
                     card.classList.add("mt-3");
                     img.classList.add("card-img-top");
                     h5.classList.add("card-title");
+                    h6.classList.add("card-title");
                     p.classList.add("card-text");
                     a.innerHTML = "Get Tickets";
-                    a.classList.add("btn-primary")
+                    a.classList.add("btn")
+                    a.classList.add("btn-danger")
 
                     append(card, img);
                     append(cardBody, h5);
-                    append(cardBody, h5);
+                    append(cardBody, h6);
                     append(cardBody, p);
                     append(cardBody, p2);
                     append(cardBody, a);
