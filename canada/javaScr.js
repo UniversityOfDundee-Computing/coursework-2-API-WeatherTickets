@@ -19,7 +19,7 @@ function createNode(element) {
   
 //const numberOfUsers = 10;
 const SportCollection = document.getElementById('Sports');
-const urlSports = 'https://api.seatgeek.com/2/events?client_id=MzA5MTQ0NDV8MTY3MDY5NTgzMS4zMzk0NzQy';
+const urlSports = 'https://api.seatgeek.com/2/events?type=NBA&client_id=MzA5MTQ0NDV8MTY3MDY5NTgzMS4zMzk0NzQy';
 
 fetch(urlSports)
   .then((resp) => resp.json())
@@ -116,11 +116,12 @@ console.log(data);
         var card = createNode('div');
         var cardBody = createNode('div');
         var button = createNode('div');
+        var cardHeader = createNode('div');
 
 
             
 
-            
+        cardHeader.classList.add('card-header')    
         button.classList.add('btn');
         button.classList.add('btn-primary');
         cardBody.classList.add('card-body');
@@ -131,27 +132,41 @@ console.log(data);
 
         p.classList.add('card-title');
         p.classList.add('card-text');
-            
-            
+        card.classList.add('mt-5');
+        
+         
+         
+        var split = Music.datetime_local.split('T');
              
-        p.innerHTML = Music.type;
-        img.src = null;
-        h5.innerHTML = Music.Title;
+        p.innerHTML = split[1];
+        cardHeader.innerHTML = split[0];
+
+
+        img.src = Music.performers[0].image;
+         
+        h5.innerHTML = Sports.title;
         button.innerHTML = "Furhter Deatils";
 
 
+        
+        
+
+        append(card, cardHeader)
         append(card , img);
         append(cardBody,h5);
         append(cardBody, p);
+         
         append(card, cardBody);
         append(card, button)
         append(column, card);
         append(MusicCollection, column);
 
+
     })
 
-  })
-  .catch(function(error){
+})
+.catch(function(error){
 
-    console.log(error);
-  });
+  console.log(error);
+});
+  
