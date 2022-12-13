@@ -11,14 +11,16 @@ window.onload = function () {
 
     const eventContainer = document.getElementById('events');
 
-    url = 'https://api.seatgeek.com/2/events/?client_id=MzA5MTQ0NDV8MTY3MDY5NTgzMS4zMzk0NzQy';
+    url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&page=0&size=40&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
+
+
 
     fetch(url)
         .then((resp) => resp.json())
         .then(function (data) {
             console.log(data);
 
-            var events = data.events;
+            var events = data._embedded.events;
             return events.map(function (events) {
                 var img = createNode('img');
                 var h5 = createNode('h5');
@@ -27,49 +29,48 @@ window.onload = function () {
                 var p2 = createNode('p');
                 var a = createNode('a');
 
-                // Only show events in the US
-                if (events.venue.country == "US") {
-                    p.innerHTML = events.venue.city;
-                    p2.innerHTML = events.venue.state;
-                    img.src = events.performers[0].image;
-                    h6.innerHTML = events.venue.name;
-                    h5.innerHTML = events.performers[0].name;
-                    a.href = events.url;
+                p.innerHTML = events.name;
+                p2.innerHTML = events.classifications[0].genre.name;
+                img.src = events.images[0].url;
+                h6.innerHTML = events.name;
+                h5.innerHTML = events.classifications[0].genre.name;
+                a.href = events.url;
 
-                    var column = createNode('div');
-                    column.classList.add("col-3");
-                    var card = createNode('div');
-                    var cardBody = createNode('div');
-                    cardBody.classList.add("card-body")
+                var column = createNode('div');
+                column.classList.add("col-3");
+                var card = createNode('div');
+                var cardBody = createNode('div');
+                cardBody.classList.add("card-body")
 
-                    card.classList.add("card");
-                    card.classList.add("mt-3");
-                    img.classList.add("card-img-top");
-                    h5.classList.add("card-title");
-                    h6.classList.add("card-title");
-                    p.classList.add("card-text");
-                    a.innerHTML = "Get Tickets";
-                    a.classList.add("btn")
-                    a.classList.add("btn-danger")
+                card.classList.add("card");
+                card.classList.add("mt-3");
+                img.classList.add("card-img-top");
+                h5.classList.add("card-title");
+                h6.classList.add("card-title");
+                p.classList.add("card-text");
+                a.innerHTML = "Get Tickets";
+                a.classList.add("btn")
+                a.classList.add("btn-danger")
 
-                    append(card, img);
-                    append(cardBody, h5);
-                    append(cardBody, h6);
-                    append(cardBody, p);
-                    append(cardBody, p2);
-                    append(cardBody, a);
+                append(card, img);
+                append(cardBody, h5);
+                append(cardBody, h6);
+                append(cardBody, p);
+                append(cardBody, p2);
+                append(cardBody, a);
 
 
-                    append(card, cardBody);
-                    append(column, card);
+                append(card, cardBody);
+                append(column, card);
 
 
-                    append(eventContainer, column);
-                }
-
-            })
+                append(eventContainer, column);
+            }
 
 
+
+
+            )
         })
         .catch(function (error) {
 
