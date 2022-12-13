@@ -201,7 +201,7 @@ console.log(data);
 
 
 const RaveCollection = document.getElementById('Rave');
-const urlRave = 'https://api.seatgeek.com/2/events?venue.country=Canada&client_id=MzA5MTQ0NDV8MTY3MDY5NTgzMS4zMzk0NzQy';
+const urlRave = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=CA&city=Toronto&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
 
 fetch(urlRave)
   .then((resp) => resp.json())
@@ -210,7 +210,7 @@ fetch(urlRave)
 
 console.log(data);
 
-    var Rave = data.events;
+    var Rave = data._embedded.events;
     return Rave.map(function(Rave){
 
          
@@ -245,7 +245,7 @@ console.log(data);
 
         imgOverlay.classList.add("card-img-overlay");
 
-        column.classList.add("col-xxl-4");
+        column.classList.add("col-xxl-3");
         column.classList.add("col-xl-4");
         column.classList.add("col-lg-6");
         column.classList.add("col-md-6");
@@ -256,13 +256,14 @@ console.log(data);
         
         
         
-         
-        var split = Rave.datetime_local.split('T');
-        footer.innerHTML =  split[0] ;
-        
-        img.src = Rave.performers[0].image;
+        img.src = Rave.images[0].url;
 
-        h5.innerHTML = Rave.title;
+         
+        footer.innerHTML =  Rave.dates.start.localDate ;
+        
+       
+
+        h5.innerHTML = Rave.name;
         
         p.innerHTML = " ";
 
