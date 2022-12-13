@@ -63,7 +63,11 @@ console.log(data);
 
         imgOverlay.classList.add("card-img-overlay");
 
-        column.classList.add("col-4");
+        column.classList.add("col-xxl-4");
+        column.classList.add("col-xl-4");
+        column.classList.add("col-lg-6");
+        column.classList.add("col-md-6");
+        column.classList.add("col-sm-12");
         
         p.classList.add('card-text');
         p.classList.add('text-primary');
@@ -149,7 +153,11 @@ console.log(data);
 
         imgOverlay.classList.add("card-img-overlay");
 
-        column.classList.add("col-4");
+        column.classList.add("col-xxl-4");
+        column.classList.add("col-xl-4");
+        column.classList.add("col-lg-6");
+        column.classList.add("col-md-6");
+        column.classList.add("col-sm-12");
         
         p.classList.add('card-text');
         p.classList.add('text-primary');
@@ -237,7 +245,11 @@ console.log(data);
 
         imgOverlay.classList.add("card-img-overlay");
 
-        column.classList.add("col-4");
+        column.classList.add("col-xxl-4");
+        column.classList.add("col-xl-4");
+        column.classList.add("col-lg-6");
+        column.classList.add("col-md-6");
+        column.classList.add("col-sm-12");
         
         p.classList.add('card-text');
         p.classList.add('text-primary');
