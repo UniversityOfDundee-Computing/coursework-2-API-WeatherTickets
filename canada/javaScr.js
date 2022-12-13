@@ -169,4 +169,77 @@ console.log(data);
 
   console.log(error);
 });
+
+
+
+
+
+
+const RaveCollection = document.getElementById('Rave');
+const urlRave = 'https://api.seatgeek.com/2/events?venue.country=Canada&client_id=MzA5MTQ0NDV8MTY3MDY5NTgzMS4zMzk0NzQy';
+
+fetch(urlRave)
+  .then((resp) => resp.json())
+  .then(function(data)
+  {
+
+console.log(data);
+
+    var Rave = data.events;
+    return Rave.map(function(Rave){
+
+         
+        
+        var card = createNode('div');
+        var img = createNode('img');
+        var h5 = createNode('h5');
+        var imgOverlay = createNode('div');
+        var p = createNode('p');
+        var column = createNode("div");
+        
+
+        img.classList.add("card-img"); 
+
+        card.classList.add('card');  
+        card.classList.add('text-bg-dark');
+        card.classList.add('mt-4');
+
+        h5.classList.add("card-title");
+        
+
+        imgOverlay.classList.add("card-img-overlay");
+
+        column.classList.add("col-3");
+        
+        p.classList.add('card-text');
+        p.classList.add('text-primary');
+        p.classList.add('bg-primary');
+        
+        
+         
+        var split = Rave.datetime_local.split('T');
+        p.innerHTML = "text for";
+        img.src = Rave.performers[0].image;
+        h5.innerHTML = 'this';
+         
+
+
+        
+        
+
+        append(card , img);
+        append(imgOverlay,h5);
+        //append(imgOverlay, p);
+        
+        append(column, card);
+        append(RaveCollection, column);
+
+
+    })
+
+})
+.catch(function(error){
+
+  console.log(error);
+});
   
