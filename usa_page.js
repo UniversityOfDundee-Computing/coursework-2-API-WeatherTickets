@@ -13,6 +13,18 @@ window.onload = function () {
 
     url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&page=0&size=40&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
 
+    curl = 'https://api.open-meteo.com/v1/forecast?latitude=-90.0&longitude=35.13&hourly=temperature_2m&current_weather=true';
+
+    fetch(curl)
+        .then((resp) => resp.json())
+        .then(function (data) {
+            console.log(data);
+        })
+        .catch(function (error) {
+
+            console.log(error);
+        });
+
 
 
     fetch(url)
@@ -26,14 +38,22 @@ window.onload = function () {
                 var h5 = createNode('h5');
                 var h6 = createNode('h6');
                 var p = createNode('p');
-                var p2 = createNode('p');
                 var a = createNode('a');
+                //get the longitude and the latitude
+                var longitude = events._embedded.venues[0].location.longitude;
+                var latitude = events._embedded.venues[0].location.latitude;
 
-                p.innerHTML = events.name;
-                p2.innerHTML = events.classifications[0].genre.name;
+                console.log(longitude, latitude);
+                
+                //get the event name
+                h5.innerHTML = events.name;
+                //get the city of venue of event
+                h6.innerHTML = events._embedded.venues[0].city.name;
+                //get the type of event
+                p.innerHTML = events.classifications[0].genre.name;
+                //get an image for the event
                 img.src = events.images[0].url;
-                h6.innerHTML = events.name;
-                h5.innerHTML = events.classifications[0].genre.name;
+                //get the link for the tickets
                 a.href = events.url;
 
                 var column = createNode('div');
