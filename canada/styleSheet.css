@@ -1,0 +1,30 @@
+
+body{
+
+    margin:0px;
+    padding:0px;
+
+}
+
+#topPage {
+    background-image: url("https://images5.alphacoders.com/692/692600.jpg") ;
+    background-size: cover;
+    height: 600px;
+    width:100%;
+    
+
+}
+
+
+ #purp{
+
+    color: rgb(255, 0, 0);
+    font-family:Verdana;
+
+}
+
+#CardBoarder{
+
+    margin-left:50px ;
+    margin-right:50px ;
+}
