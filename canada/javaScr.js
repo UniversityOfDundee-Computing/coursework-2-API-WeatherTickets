@@ -35,6 +35,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           var extra = createNode('h5');
           
           extra.classList.add('card-header')
+          extra.classList.add('extraHeight')
 
           img.classList.add("card-img"); 
           img.classList.add("rounded-3"); 
@@ -151,11 +152,19 @@ $("#combutton").click(function() {
 
   
   var x = $("#comTextBox").val();
+  var y = $("#comTextBox1").val();
   
-  var city = 'city=' + x ;
+  var city = 'city=' + x + '&';
+  var date = 'startDateTime=' + y + '&' ;
 
-  FetchCycle('Com' , '&classificationName=festivals&' + city + '&' );
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+
+  FetchCycle('Com' , '&classificationName=festivals&' + city  + date );
 })
+
+
+
 
 $("#hockbutton").click(function() { 
 
@@ -163,11 +172,17 @@ $("#hockbutton").click(function() {
 
   festvTextBox
   var x = $("#hockTextBox").val();
+  var y = $("#hockTextBox1").val();
   
-  var city = 'city=' + x ;
+  var city = 'city=' + x + '&';
+  var date = 'startDateTime=' + y + '&' ;
 
-  FetchCycle('Hockey' , '&classificationName=hockey&' + city + '&' );
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+
+  FetchCycle('Hockey' , '&classificationName=hockey&' + city  + date );
 })
+
 
 
 
@@ -177,10 +192,15 @@ $("#festbutton").click(function() {
 
   
   var x = $("#festvTextBox").val();
+  var y = $("#festvTextBox1").val();
   
-  var city = 'city=' + x ;
+  var city = 'city=' + x + '&';
+  var date = 'startlocalDate=' + y + '&' ;
 
-  FetchCycle('Sports' , '&classificationName=festivals&' + city + '&' );
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+
+  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
 })
 
 
