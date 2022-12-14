@@ -54,7 +54,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
           footer.classList.add("card-footer");
           footer.classList.add("bg-warning");
-          //footer.classList.add("text-end");
+          
           
           
           extra.classList.add("bg-info");
@@ -142,8 +142,46 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
 FetchCycle('Sports' , '&classificationName=festivals&' );
 FetchCycle('Hockey' , '&classificationName=hockey&' );
-FetchCycle('Rave' , '&classificationName=comedy&' );
+FetchCycle('Com' , '&classificationName=comedy&' );
  
+
+$("#combutton").click(function() { 
+
+  Com.innerHTML = "";
+
+  
+  var x = $("#comTextBox").val();
+  
+  var city = 'city=' + x ;
+
+  FetchCycle('Com' , '&classificationName=festivals&' + city + '&' );
+})
+
+$("#hockbutton").click(function() { 
+
+  Hockey.innerHTML = "";
+
+  festvTextBox
+  var x = $("#hockTextBox").val();
+  
+  var city = 'city=' + x ;
+
+  FetchCycle('Hockey' , '&classificationName=hockey&' + city + '&' );
+})
+
+
+
+$("#festbutton").click(function() { 
+
+  Sports.innerHTML = "";
+
+  
+  var x = $("#festvTextBox").val();
+  
+  var city = 'city=' + x ;
+
+  FetchCycle('Sports' , '&classificationName=festivals&' + city + '&' );
+})
 
 
 
