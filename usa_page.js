@@ -38,7 +38,7 @@ window.onload = function () {
                 var p = createNode('p');
                 var a = createNode('a');
 
-                //get the longitude and the latitude values
+                //store the longitude and the latitude values in variables
                 var longitude = events._embedded.venues[0].location.longitude;
                 var latitude = events._embedded.venues[0].location.latitude;
               
@@ -49,8 +49,6 @@ window.onload = function () {
                     .then(function (data) {
 
                         console.log(data.current_weather.temperature);
-
-                        var p1 = createNode('p');
 
                         //display the temparature from the latitude and longitude
                         p.innerHTML = "Current Temperature: " + data.current_weather.temperature + "℃";
@@ -73,7 +71,10 @@ window.onload = function () {
                 a.href = events.url;
 
                 var column = createNode('div');
-                column.classList.add("col-3");
+                column.classList.add("col-12");
+                column.classList.add("col-sm-6");
+                column.classList.add("col-md-4");
+                column.classList.add("col-lg-3");
                 var card = createNode('div');
                 var cardBody = createNode('div');
                 cardBody.classList.add("card-body")
@@ -96,8 +97,12 @@ window.onload = function () {
 
                 append(card, cardBody);
                 append(column, card);
+               
+                
 
                 append(eventContainer, column);
+               
+          
             })
         })
         .catch(function (error) {
