@@ -150,18 +150,43 @@ $("#combutton").click(function() {
 
   Com.innerHTML = "";
 
-  
-  var x = $("#comTextBox").val();
-  var y = $("#comTextBox1").val();
+  var x = "";
+  var y = "";
+  x = $("#comTextBox").val();
+  y = $("#comTextBox1").val();
   
   var city = 'city=' + x + '&';
-  var date = 'startDateTime=' + y + '&' ;
+  var date = 'startDateTime=' + y + 'T00:00:00Z&' ;
+   
 
   if (y == ""){date = "";}
   if (x == ""){city = "";}
 
-  FetchCycle('Com' , '&classificationName=festivals&' + city  + date );
+  FetchCycle('Com' , '&classificationName=comedy&' + city  + date );
 })
+
+
+
+
+$("#festbutton").click(function() { 
+
+  Sports.innerHTML = "";
+
+  var x = "";
+  var y = "";
+  x = $("#festvTextBox").val();
+  y = $("#festvTextBox1").val();
+  
+  var city = 'city=' + x + '&';
+  var date = 'localStartDateTime=' + y + 'T00:00:00&' ;
+
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+
+  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
+})
+
+
 
 
 
@@ -170,12 +195,13 @@ $("#hockbutton").click(function() {
 
   Hockey.innerHTML = "";
 
-  festvTextBox
-  var x = $("#hockTextBox").val();
-  var y = $("#hockTextBox1").val();
+  var x = "";
+  var y = "";
+  x = $("#hockTextBox").val();
+  y = $("#hockTextBox1").val();
   
   var city = 'city=' + x + '&';
-  var date = 'startDateTime=' + y + '&' ;
+  var date = 'startDateTime=' + y + 'T00:00:00Z&' ;
 
   if (y == ""){date = "";}
   if (x == ""){city = "";}
@@ -186,22 +212,7 @@ $("#hockbutton").click(function() {
 
 
 
-$("#festbutton").click(function() { 
 
-  Sports.innerHTML = "";
-
-  
-  var x = $("#festvTextBox").val();
-  var y = $("#festvTextBox1").val();
-  
-  var city = 'city=' + x + '&';
-  var date = 'startlocalDate=' + y + '&' ;
-
-  if (y == ""){date = "";}
-  if (x == ""){city = "";}
-
-  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
-})
 
 
 
