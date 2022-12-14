@@ -31,9 +31,11 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           var imgOverlay = createNode('div');
           var p = createNode('p');
           var column = createNode("div");
-          var footer = createNode("div")
+          var footer = createNode("div");
+          var extra = createNode('h5');
           
-  
+          extra.classList.add('card-header')
+
           img.classList.add("card-img"); 
           img.classList.add("rounded-3"); 
   
@@ -43,6 +45,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
           h5.classList.add("card-title");
           h5.classList.add("text-light");
+          h5.classList.add("text-center");
           h5.classList.add("text-wrap");
           h5.classList.add("bg-dark");
           h5.classList.add("rounded");
@@ -51,8 +54,17 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
           footer.classList.add("card-footer");
           footer.classList.add("bg-warning");
+          //footer.classList.add("text-end");
           
-  
+          
+          extra.classList.add("bg-info");
+          
+          
+          
+          
+
+           
+
           imgOverlay.classList.add("card-img-overlay");
   
           column.classList.add("col-xxl-3");
@@ -76,26 +88,26 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
           }
           
-           
+          
            
           footer.innerHTML =  ("Date:&nbsp;" +(IDTAG.dates.start.localDate).toString())  + "<br>" + ("starts at:" + (IDTAG.dates.start.localTime).toString()) ;
   
-          
-         
-  
-          h5.innerHTML = IDTAG.name;
+          h5.innerHTML = IDTAG._embedded.venues[0].city.name;
           
           p.innerHTML = " ";
+
+          //if((IDTAG.name).length == )
+          
+          extra.innerHTML = IDTAG.name + (IDTAG.name).lenght;
   
   
           
-          
-  
           append(card , img);
           append(imgOverlay,h5);
           append(imgOverlay, p);
           append(card, imgOverlay);
           append(card, footer);
+          append(card, extra);
           
           append(column, card);
           append(collection, column);
@@ -130,7 +142,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
 FetchCycle('Sports' , '&classificationName=festivals&' );
 FetchCycle('Hockey' , '&classificationName=hockey&' );
-FetchCycle('Rave' , '&classificationName=football&' );
+FetchCycle('Rave' , '&classificationName=comedy&' );
  
 
 
