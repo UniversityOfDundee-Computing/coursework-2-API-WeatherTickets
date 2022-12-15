@@ -294,7 +294,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
 FetchCycle('Sports' , '&classificationName=festivals&' );
 FetchCycle('Hockey' , '&classificationName=hockey&' );
-FetchCycle('Com' , '&classificationName=comedy&' );
+FetchCycle('Com' , '&classificationName=Comedy&' );
  
 
 $("#combutton").click(function() { 
