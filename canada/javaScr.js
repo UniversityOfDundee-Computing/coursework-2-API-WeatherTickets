@@ -91,7 +91,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
 {                                            //to ad muiltiply just add another search at the end of the inittial '&classificationName=festivals&size=19&'
   const collection = document.getElementById(IDTAG);
   const url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=CA' + classifcName + 'size=20&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
-   
+  console.log(url);
   fetch(url)
     .then((resp) => resp.json())
     .then(function(data)
@@ -112,6 +112,16 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           var column = createNode("div");
           var footer = createNode("div");
           var extra = createNode('h5');
+          var button = createNode('a');
+          
+          
+
+
+          
+
+          button.classList.add('btn')
+          button.classList.add('btn-dark')
+          
           
           extra.classList.add('card-header')
           extra.classList.add('extraHeight')
@@ -163,7 +173,6 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           p.classList.add('card-text');
           p.classList.add('text-primary');
           
-          
           var counter = 0 ;
           while (true){
             widthSport = img.src = IDTAG.images[counter].width;
@@ -176,7 +185,10 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           }
           
           
+          
            
+          button.innerHTML = 'Book Now '
+
           footer.innerHTML =  ("Date:&nbsp;" +(IDTAG.dates.start.localDate).toString())  + "<br>" + ("starts at:" + (IDTAG.dates.start.localTime).toString()) ;
   
           h5.innerHTML = IDTAG._embedded.venues[0].city.name;
@@ -186,7 +198,11 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           //if((IDTAG.name).length == )
           
           extra.innerHTML = IDTAG.name + (IDTAG.name).lenght;
-  
+
+          let bookingUrl = IDTAG.url;
+          console.log(bookingUrl);
+          
+          button.href = IDTAG.url;
   
           
           append(card , img);
@@ -195,6 +211,9 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           append(card, imgOverlay);
           append(card, footer);
           append(card, extra);
+           
+          append(imgOverlay, button);
+          
           
           append(column, card);
           append(collection, column);
@@ -230,6 +249,38 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
 FetchCycle('Sports' , '&classificationName=festivals&' );
 FetchCycle('Hockey' , '&classificationName=hockey&' );
 FetchCycle('Com'    , '&classificationName=Comedy&' );
+ 
+
+
+$("#searchButton").click(function() { 
+
+  Search.innerHTML = "";
+
+  var x = "";
+  var y = "";
+  var z = "";
+  
+  x = $("#searchTextBox").val();
+  y = $("#searchTextBox1").val();
+  z = $("#searchTextBox2").val();
+   
+  
+  
+  var city = '&city=' + x + '&';
+  var date = '&startDateTime=' + y + 'T00:00:00Z&' ;
+  var categ = '&classificationName=' + z + '&';
+  
+   
+
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+  if (z == ""){categ = "";}
+  console.log(date);
+  console.log(city);
+  console.log(categ);
+
+  FetchCycle('Search' ,  city + categ +  date );
+})
  
 
 $("#combutton").click(function() { 
