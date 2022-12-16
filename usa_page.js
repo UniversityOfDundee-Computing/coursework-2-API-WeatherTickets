@@ -12,9 +12,10 @@ window.onload = function () {
 
     //ticketmaster API
     url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&page=0&size=40&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
-    //open-meteo API
-    curl = 'https://api.open-meteo.com/v1/forecast?latitude=-90.0&longitude=35.13&hourly=temperature_2m&current_weather=true';
+    //air pollution API
+    curl = 'https://api.waqi.info/feed/shanghai/?token=3b21406ee283d1489a9bc3cf5ccb723fdf99c66e';
 
+  ;
 
     fetch(url)
         .then((resp) => resp.json())
@@ -33,21 +34,18 @@ window.onload = function () {
                 var a1 = createNode('a');
 
 
+                //get the city of the venue
+                var city = events._embedded.venues[0].city.name;
 
-
-                //store the longitude and the latitude values in variables
-                var longitude = events._embedded.venues[0].location.longitude;
-                var latitude = events._embedded.venues[0].location.latitude;
-
-                fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&' + 'longitude=' + longitude + '&hourly=temperature_2m&current_weather=true')
+                fetch("https://api.waqi.info/feed/" + city + "/?token=3b21406ee283d1489a9bc3cf5ccb723fdf99c66e")
                     .then((resp) => resp.json())
                     .then(function (data) {
 
-                        temp = data.current_weather.temperature;
+                        AQI = data.data.aqi;
 
-                        //display the temparature from the latitude and longitude
+                        //display the air quality index from the city name
 
-                        p1.innerHTML = "Current Temperature: " + temp + "℃";
+                        p1.innerHTML = "Air Quality Index: " + AQI;
                         p1.classList.add("card-text");
                         append(cardBody, p1);
 
@@ -100,6 +98,7 @@ window.onload = function () {
                 a.classList.add("btn-danger");
                 a1.classList.add("btn");
                 a1.classList.add("btn-primary");
+                a1.classList.add("mt-2");
                 
                 append(card, img);
                 append(cardBody, h5);
