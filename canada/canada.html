@@ -21,7 +21,21 @@
 </head>
 <body>
 
-
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link " href="../Homepage/index.html">Home</a>
+    
+     
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Canada</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../US/usa_page.html">USA</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../ContactUs/Contactus.html">Contact Us</a>
+    </li>
+  </ul>
 
   
 
@@ -46,8 +60,10 @@
             <div class="my-1 py-1  "></div>
             <p id="purp" class="fs-1 fw-bold text-center text-light">Canada</p>
             <div class="my-4 py-4  "></div>
-            <p id="purp" class="fs-3 fw-bold text-center text-light">Do What You Want To Do </p>
-            <p id="purp" class="fs-3 fw-bold text-center text-light">And Breathe Easy</p>
+            <div id="purp">
+            <p   class="fs-3 fw-bold text-center text-light">Do What You Want To Do </p>
+            <p   class="fs-3 fw-bold text-center text-light">And Breathe Easy</p>
+           </div>
             <div class="my-3 py-3  "></div>
             <div class="mt-2 pt-2">
               <div class="row">
@@ -55,7 +71,7 @@
                 <div class="col-0"> </div>
                     <div class="col-12">
                       <div class="input-group mt-2">
-                        .<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                         <span class="input-group-text ">City/Date/Category</span>
                       </div>
 
@@ -112,6 +128,16 @@
 
 
 
+      <div class="text-center">
+        <h1 id = "CardBoarder">polution rating</h1>
+         
+        <h3 class="text-success">green is a good quality</h3>
+        <h3 class="text-info" >blue is a moderate quality</h3>
+        <h3 class="text-warning">yellow is a moderatly unhealthy quality</h3>
+        <h3 class="text-danger">red then quality is unhealthy</h3>
+        <h3 class="text-secondary">gray then quality is very unhealthy</h3>
+        <h3 class="text-dark">dark then quality is Hazardous, we would not recomend attending this event</h3>
+      </div>
 
 
 
@@ -157,11 +183,18 @@
                 <h1 class="text-light ">Festivals</h1>
             </div>
 
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-5  col-sm-10 col-xs-6">
+            <div class="col-xxl-4 col-xl-4 col-lg-8 col-md-8  col-sm-10 col-xs-6">
               <div  id="CardBoarder" class="input-group mt-2">
                 <span  class="input-group-text">City and Date</span>
-                <input id="festvTextBox " type="text"   class="form-control">           <!--input boxes-->
+                <div class = "col-4"> 
+                <input id="festvTextBox" type="text"   class="form-control">  
+                </div>                                                                 <!--input boxes-->
+
+                <div class = "col-3"> 
                 <input id="festvTextBox1" type="text"   class="form-control" >
+              </div> 
+
+
               </div>
  
                
@@ -208,11 +241,25 @@
 
 
 
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-5  col-sm-10 col-xs-6">
+            <div class="col-xxl-4 col-xl-4 col-lg-8 col-md-8  col-sm-10 col-xs-6">
               <div id="CardBoarder" class="input-group mt-2">
-                <span class="input-group-text">City and Date</span>
-                <input id="hockTextBox" type="text"   class="form-control">           <!--input boxes-->
-                <input id="hockTextBox1" type="text"   class="form-control">
+
+                <span class="input-group-text rounded">City and Date</span>
+
+                <div class = "col-4"> 
+                  <input id="hockTextBox" type="text"   class="form-control">  
+                  </div>                                                                 <!--input boxes-->
+  
+                  <div class = "col-3"> 
+                  <input id="festvTextBox1" type="text"   class="form-control" >
+                </div> 
+
+
+
+
+
+                
+                 
               </div>
 
             </div>
@@ -265,12 +312,28 @@
 
 
 
-          <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-5  col-sm-10 col-xs-6">
+          <div class="col-xxl-4 col-xl-4 col-lg-8 col-md-8  col-sm-10 col-xs-6">
             <div id="CardBoarder" class="input-group mt-2">
-              <span class="input-group-text">City and Date</span>
-              <input id="comTextBox" type="text"   class="form-control">           <!--input boxes-->
-              <input id="comTextBox1" type="text"   class="form-control">
-            </div>
+
+
+              <span class="input-group-text rounded">City and Date</span>
+
+                <div class = "col-4"> 
+                  <input id="comTextBox" type="text"   class="form-control">  
+                  </div>                                                                 <!--input boxes-->
+  
+                  <div class = "col-3"> 
+                  <input id="comTextBox1" type="text"   class="form-control" >
+                </div> 
+              </div> 
+
+
+
+
+
+
+
+               
 
           </div>
 
@@ -304,25 +367,17 @@
 <script src="javaScr.js"></script>
 </body>
 
-<footer class="mt-5">
-  <div class="container text-dark">
-    <hr>
-      <div class="row">
-          <div class="col">
-              <ul class=" ">    
-                  <li>Alex G</li>
-                  <li>Ben P</li>
-                  <li>Marylou S</li>
-                  <li>Ronan H</li>
-                  <li>Tanush G</li>
-              </ul>
-          </div>
-
-          <div class="col  mt-3">
-              Copyright © group, All rights reserved
-          </div>
+<div class="footer">
+    <div id="button"></div>
+    <div id="container">
+      <div id="cont">
+        <div class="footer_center">
+          <h3>CW 2 - API Mashup </h3>
+          <h5>Tanush, Alexander, Marylou, Ben, Roman</h5>
+          <h5>We do not represent ticketmaster and hold no rights over any of the information given above</h5>
+        </div>
       </div>
+    </div>
   </div>
-</footer>
 
 </html>

@@ -121,13 +121,15 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
 
           button.classList.add('btn')
           button.classList.add('btn-dark')
+          button.classList.add('mt-1')
           
           
           extra.classList.add('card-header')
           extra.classList.add('extraHeight')
+          extra.classList.add('rounded-bottom')
 
           img.classList.add("card-img"); 
-          img.classList.add("rounded-3"); 
+          img.classList.add("rounded-top"); 
   
           card.classList.add('card');  
           card.classList.add('text-bg-dark');
@@ -154,7 +156,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
 
           extra.classList.add(dangerlevel);
 
-          //extra.classList.add("bg-info");
+           
           
           
           
@@ -212,7 +214,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           append(card, footer);
           append(card, extra);
            
-          append(imgOverlay, button);
+          append(footer, button);
           
           
           append(column, card);
