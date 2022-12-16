@@ -1,11 +1,14 @@
 
 body{
-
+    color: red;
     margin:0px;
     padding:0px;
     background-color:black;
 
 }
+
+
+ 
 
 #topPage {
     background-image: url("https://images5.alphacoders.com/692/692600.jpg") ;
@@ -59,12 +62,7 @@ body{
     --transition-speed: 100ms;
   }
   
-  body {
-    color: red;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-  }
+  
   
   body::-webkit-scrollbar {
     width: 0.25rem;
@@ -352,9 +350,9 @@ body{
 /* FOOTER CSS */
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
 body{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Monaco', sans-serif;
   font-weight:300;
-  background-color:lightblue;
+  background-color:black;
   color:#FFF;
 }
 section{
