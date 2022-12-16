@@ -156,7 +156,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
 
           extra.classList.add(dangerlevel);
 
-          //extra.classList.add("bg-info");
+           
           
           
           
