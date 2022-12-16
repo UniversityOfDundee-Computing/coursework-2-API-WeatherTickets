@@ -8,14 +8,17 @@ window.onload = function () {
         return parent.appendChild(el);
     }
 
+    // holds each type of event
+    const sportsContainer = document.getElementById('sports');
+    const musicContainer = document.getElementById('music');
     const eventContainer = document.getElementById('events');
 
     //ticketmaster API
-    url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&page=0&size=40&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
+    url = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&page=2&size=20&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
     //air pollution API
     curl = 'https://api.waqi.info/feed/shanghai/?token=3b21406ee283d1489a9bc3cf5ccb723fdf99c66e';
 
-  ;
+
 
     fetch(url)
         .then((resp) => resp.json())
@@ -34,6 +37,7 @@ window.onload = function () {
                 var a1 = createNode('a');
 
 
+
                 //get the city of the venue
                 var city = events._embedded.venues[0].city.name;
 
@@ -49,15 +53,13 @@ window.onload = function () {
                         p1.classList.add("card-text");
                         append(cardBody, p1);
 
-                        append(eventContainer, column);
-
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
 
-                    p5 = events.id
-                    console.log(p5);
+                p5 = events.id
+                console.log(p5);
 
                 //get an image for the event
                 img.src = events.images[0].url;
@@ -70,10 +72,10 @@ window.onload = function () {
                 //get the link for the tickets
                 a.href = events.url;
                 //link to single event page
-                a1.href = "event_info.html?id="+ p5;
+                a1.href = "event_info.html?id=" + p5;
                 //get the ID of an event and store it in the p5 variable
-           
-                
+
+
 
                 var column = createNode('div');
                 column.classList.add("col-12");
@@ -90,16 +92,17 @@ window.onload = function () {
                 h5.classList.add("card-title");
                 h6.classList.add("card-title");
                 p.classList.add("card-text");
-                
+
 
                 a.innerHTML = "Get Tickets";
                 a1.innerHTML = "Event Info";
                 a.classList.add("btn");
                 a.classList.add("btn-danger");
+                a.classList.add("m-2");
                 a1.classList.add("btn");
                 a1.classList.add("btn-primary");
-                a1.classList.add("mt-2");
-                
+                a1.classList.add("m-2");
+
                 append(card, img);
                 append(cardBody, h5);
                 append(cardBody, h6);
@@ -110,6 +113,17 @@ window.onload = function () {
                 append(column, card);
                 append(cardBody, a1);
 
+
+
+                var type = events.classifications[0].segment.name;
+                console.log(type);
+                if (type == 'Music') {
+                    append(musicContainer, column);
+                } else if (type == 'Sports') {
+                    append(sportsContainer, column);
+                }else{
+                    append(eventContainer, column);
+                }
             })
         })
         .catch(function (error) {
@@ -120,5 +134,5 @@ window.onload = function () {
 
 
 
-        
+
 }

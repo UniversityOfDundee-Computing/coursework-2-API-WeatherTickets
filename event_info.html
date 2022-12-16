@@ -16,17 +16,47 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row mt-4">
-      <div class="col">
+
+  <!-- navbar-->
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link " href="index.html">Home</a>
+    </li>
+    <li class="nav-link" href="#">About Us</a>
+    </li>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="canada.html">Canada</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="usa_page.html">USA</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="Contactus.html">Contact Us</a>
+    </li>
+  </ul>
 
 
+
+
+  <div id="eventInfo" class="row m-5"></div>
+  <button type="button" class="btn btn-primary" id="goBack">Back to All Events</button>
+
+
+  <!-- footer-->
+  <div class="footer">
+    <div id="button"></div>
+    <div id="container">
+      <div id="cont">
+        <div class="footer_center">
+          <h3>CW 2 - API Mashup </h3>
+          <h5>Tanush, Alexander, Marylou, Ben, Roman</h5>
+          <h5>We do not represent ticketmaster and hold no rights over any of the information given above</h5>
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="eventInfo" class="row"></div>
-  <button type="button" class="btn btn-primary" id="goBack">Back to All Events</button>
 
   <script>
 
@@ -57,9 +87,9 @@
         console.log(data);
 
         var column = createNode('div');
-        column.classList.add("col-4");
+        column.classList.add("col-8");
         var column2 = createNode('div');
-        column2.classList.add("col-8");
+        column2.classList.add("col-4");
 
         var h2 = createNode('h2');
         var img = createNode('img');
@@ -77,18 +107,25 @@
         p3.innerHTML = data.promoter.name;
         p4.innerHTML = "Ticket Limit: " + data.ticketLimit.info;
         p5.innerHTML = "Parking Details: " + data._embedded.venues[0].parkingDetail;
-        p6.innerHTML = "Accessible Seating Deatails: " + data._embedded.venues[0].accessibleSeatingDetail;
+        p6.innerHTML = "Accessible Seating Details: " + data._embedded.venues[0].accessibleSeatingDetail;
 
-        append(column2, h2);
-        append(column2, p);
-        append(column2, p2);
-        append(column2, p3);
-        append(column2, p4);
-        append(column2, p5);
-        append(column2, p6);
-        append(column2, goBack);
+        if(img && img.style) {
+        img.style.height = '300px';
+        img.style.width = '300px';
+      }
 
-        append(column, img);
+
+        append(column, h2);
+        append(column, p);
+        append(column, p2);
+        append(column, p3);
+        append(column, p4);
+        append(column, p5);
+        append(column, p6);
+        append(column, goBack);
+        append(column2, img);
+
+
 
         append(EventInfoContainer, column);
         append(EventInfoContainer, column2);
