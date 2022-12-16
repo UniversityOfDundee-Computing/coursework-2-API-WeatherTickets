@@ -285,6 +285,51 @@ $("#searchButton").click(function() {
 })
  
 
+
+
+
+
+
+
+$("#hockbutton").click(function() { 
+
+  Hockey.innerHTML = "";
+
+  var x = "";
+  var y = "";
+   
+  
+  x = $("#hockTextBox").val();
+  y = $("#hockTextBox1").val();
+   
+   
+  
+  
+  var city = '&city=' + x + '&';
+  var date = '&startDateTime=' + y + 'T00:00:00Z&' ;
+   
+  
+   
+
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+   
+  
+  FetchCycle('Hockey' , '&classificationName=hockey' + city +  date );
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 $("#combutton").click(function() { 
 
   Com.innerHTML = "";
@@ -304,6 +349,8 @@ $("#combutton").click(function() {
   FetchCycle('Com' , '&classificationName=comedy&' + city  + date );
 })
 
+  
+
 
 
 
@@ -313,31 +360,43 @@ $("#festbutton").click(function() {
 
   var x = "";
   var y = "";
+  var z = "";
+  
   x = $("#festvTextBox").val();
   y = $("#festvTextBox1").val();
+   
+   
   
-  var city = 'city=' + x + '&';
-  var date = 'startDateTime=' + y + 'T00:00:00&' ;
+  
+  var city = '&city=' + x + '&';
+  var date = '&startDateTime=' + y + 'T00:00:00Z&' ;
+   
+  
+   
 
   if (y == ""){date = "";}
   if (x == ""){city = "";}
+  
+   
 
-  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
+  FetchCycle('Sports' , '&classificationName=festivals&' + city +    date );
 })
+ 
 
 
+ 
 
+/** 
+ * 
+ * 
+ * $("#festbutton").click(function() { 
 
-
-
-$("#hockbutton").click(function() { 
-
-  Hockey.innerHTML = "";
+  Sports.innerHTML = "";
 
   var x = "";
   var y = "";
-  x = $("#hockTextBox").val();
-  y = $("#hockTextBox1").val();
+  x = $("#festvTextBox").val();
+  y = $("#festvTextBox1").val();
   
   var city = 'city=' + x + '&';
   var date = 'startDateTime=' + y + 'T00:00:00Z&' ;
@@ -345,20 +404,24 @@ $("#hockbutton").click(function() {
   if (y == ""){date = "";}
   if (x == ""){city = "";}
 
-  FetchCycle('Hockey' , '&classificationName=hockey&' + city  + date );
+  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
 })
 
-
-
-
-
-
-
-
-
-
-
-/** 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
 const RaveCollection = document.getElementById('Rave');
 const urlRave = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=CA&city=Toronto&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
 
