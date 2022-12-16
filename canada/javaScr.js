@@ -104,6 +104,8 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
   
            
           
+         //this makes the tags value so that class's can be appened to them to create a card
+      
           var card = createNode('div');
           var img = createNode('img');
           var h5 = createNode('h5');
@@ -117,7 +119,7 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           
 
 
-          
+          //card attributes are now given class values 
 
           button.classList.add('btn')
           button.classList.add('btn-dark')
@@ -148,21 +150,13 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           footer.classList.add("bg-warning");
           
           
-          
-        
+        //changes the color of the extra depending on the air quality and uses local storage to do it 
+
         getPolution(IDTAG._embedded.venues[0].city.name); //gets the polution value of the city
         let dangerlevel = polutionRating()//gets the color that that polution level represents
            
-
+          
           extra.classList.add(dangerlevel);
-
-           
-          
-          
-          
-          
-
-           
 
           imgOverlay.classList.add("card-img-overlay");
   
@@ -174,6 +168,10 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           
           p.classList.add('card-text');
           p.classList.add('text-primary');
+
+
+          //this decides what image to use from the api, the img url are in a 10 array but not in the same position as some are other sizes
+          //this sorts that
           
           var counter = 0 ;
           while (true){
@@ -189,16 +187,15 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           
           
            
-          button.innerHTML = 'Book Now '
+          button.innerHTML = 'Book Now ';    //button value for the booking button
 
           footer.innerHTML =  ("Date:&nbsp;" +(IDTAG.dates.start.localDate).toString())  + "<br>" + ("starts at:" + (IDTAG.dates.start.localTime).toString()) ;
+          //values for the date and the time that the event is showing 
   
-          h5.innerHTML = IDTAG._embedded.venues[0].city.name;
+          h5.innerHTML = IDTAG._embedded.venues[0].city.name;  //city name 
           
           p.innerHTML = " ";
-
-          //if((IDTAG.name).length == )
-          
+ 
           extra.innerHTML = IDTAG.name + (IDTAG.name).lenght;
 
           let bookingUrl = IDTAG.url;
@@ -207,6 +204,8 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
           button.href = IDTAG.url;
   
           
+          //nests the tags so that a card is constructed in the right way 
+
           append(card , img);
           append(imgOverlay,h5);
           append(imgOverlay, p);
@@ -229,30 +228,21 @@ function FetchCycle(IDTAG , classifcName   ) //example of one of the name being 
     console.log(error);
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 }
 
   
-  
+/** the inital fetches to fill the page with data */  
+
 FetchCycle('Sports' , '&classificationName=festivals&' );
 FetchCycle('Hockey' , '&classificationName=hockey&' );
 FetchCycle('Com'    , '&classificationName=Comedy&' );
- 
 
+
+ 
+/** this function takes the value from the input bars and runns a fetch that gets the data that the user inplemented */
 
 $("#searchButton").click(function() { 
 
@@ -285,6 +275,44 @@ $("#searchButton").click(function() {
 })
  
 
+
+
+
+
+
+/** this function takes the value from the input bars and runns a fetch that gets the data that the user inplemented */
+
+$("#hockbutton").click(function() { 
+
+  Hockey.innerHTML = "";
+
+  var x = "";
+  var y = "";
+  
+  x = $("#hockTextBox").val();
+  y = $("#hockTextBox1").val();
+   
+  var city = '&city=' + x + '&';
+  var date = '&startDateTime=' + y + 'T00:00:00Z&' ;
+   
+  if (y == ""){date = "";}
+  if (x == ""){city = "";}
+   
+  FetchCycle('Hockey' , '&classificationName=hockey' + city +  date );
+})
+
+
+
+
+
+
+
+
+
+/** this function takes the value from the input bars and runns a fetch that gets the data that the user inplemented */
+
+
+
 $("#combutton").click(function() { 
 
   Com.innerHTML = "";
@@ -304,6 +332,8 @@ $("#combutton").click(function() {
   FetchCycle('Com' , '&classificationName=comedy&' + city  + date );
 })
 
+  
+
 
 
 
@@ -313,31 +343,43 @@ $("#festbutton").click(function() {
 
   var x = "";
   var y = "";
+  var z = "";
+  
   x = $("#festvTextBox").val();
   y = $("#festvTextBox1").val();
+   
+   
   
-  var city = 'city=' + x + '&';
-  var date = 'startDateTime=' + y + 'T00:00:00&' ;
+  
+  var city = '&city=' + x + '&';
+  var date = '&startDateTime=' + y + 'T00:00:00Z&' ;
+   
+  
+   
 
   if (y == ""){date = "";}
   if (x == ""){city = "";}
+  
+   
 
-  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
+  FetchCycle('Sports' , '&classificationName=festivals&' + city +    date );
 })
+ 
 
 
+ 
 
+/** 
+ * 
+ * 
+ * $("#festbutton").click(function() { 
 
-
-
-$("#hockbutton").click(function() { 
-
-  Hockey.innerHTML = "";
+  Sports.innerHTML = "";
 
   var x = "";
   var y = "";
-  x = $("#hockTextBox").val();
-  y = $("#hockTextBox1").val();
+  x = $("#festvTextBox").val();
+  y = $("#festvTextBox1").val();
   
   var city = 'city=' + x + '&';
   var date = 'startDateTime=' + y + 'T00:00:00Z&' ;
@@ -345,20 +387,24 @@ $("#hockbutton").click(function() {
   if (y == ""){date = "";}
   if (x == ""){city = "";}
 
-  FetchCycle('Hockey' , '&classificationName=hockey&' + city  + date );
+  FetchCycle('Sports' , '&classificationName=festivals&' + city  + date );
 })
 
-
-
-
-
-
-
-
-
-
-
-/** 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
 const RaveCollection = document.getElementById('Rave');
 const urlRave = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=CA&city=Toronto&apikey=fqaqhbcCOEoIvdAxAwfBOgTmocXJowJI';
 
